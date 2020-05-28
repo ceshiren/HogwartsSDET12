@@ -1,5 +1,4 @@
 from appium import webdriver
-
 from appium_wework.page.base_page import BasePage
 from appium_xueqiu.page.main import Main
 
@@ -19,7 +18,7 @@ class App(BasePage):
         else:
             self._driver.launch_app()
 
-        self._driver.implicitly_wait(3)
+        self._driver.implicitly_wait(10)
 
         return self
 
