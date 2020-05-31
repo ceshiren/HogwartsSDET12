@@ -1,7 +1,5 @@
 import inspect
 import json
-import logging
-
 import yaml
 from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
@@ -18,6 +16,9 @@ class BasePage:
     def set_implicitly(self, time):
         self._driver.implicitly_wait(time)
 
+    def screenshot(self, name):
+        self._driver.save_screenshot(name)
+
     def finds(self, locator, value: str = None):
         elements: list
         if isinstance(locator, tuple):
@@ -28,8 +29,6 @@ class BasePage:
 
     @handle_black
     def find(self, locator, value: str = None):
-        logging.info(locator)
-        logging.info(value)
         element: WebElement
         if isinstance(locator, tuple):
             element = self._driver.find_element(*locator)
@@ -48,7 +47,7 @@ class BasePage:
 
     def steps(self, path):
         with open(path, encoding="utf-8") as f:
-            name  = inspect.stack()[1].function
+            name = inspect.stack()[1].function
             steps = yaml.safe_load(f)[name]
         raw = json.dumps(steps)
         for key, value in self._params.items():

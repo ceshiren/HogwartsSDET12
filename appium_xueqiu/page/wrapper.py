@@ -1,7 +1,12 @@
+import logging
+
+import allure
 from selenium.webdriver.common.by import By
 
 
 def handle_black(func):
+    logging.basicConfig(level=logging.INFO)
+
     def wrapper(*args, **kwargs):
         from appium_xueqiu.page.base_page import BasePage
         _black_list = [
@@ -14,12 +19,18 @@ def handle_black(func):
         _error_num = 0
         instance: BasePage = args[0]
         try:
+            logging.info("run " + func.__name__ + "\n args: \n" + repr(args[1:]) + "\n" + repr(kwargs))
             element = func(*args, **kwargs)
             _error_num = 0
             # 隐式等待回复原来的等待，
             instance._driver.implicitly_wait(10)
             return element
         except Exception as e:
+            instance.screenshot("tmp.png")
+            with open("tmp.png", "rb") as f:
+                content = f.read()
+            allure.attach(content,attachment_type=allure.attachment_type.PNG)
+            logging.error("element not found, handle black list")
             instance._driver.get_screenshot_as_png()
             instance._driver.implicitly_wait(1)
             # 判断异常处理次数
