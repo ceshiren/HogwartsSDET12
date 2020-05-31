@@ -20,6 +20,7 @@ def handle_black(func):
             instance._driver.implicitly_wait(10)
             return element
         except Exception as e:
+            instance._driver.get_screenshot_as_png()
             instance._driver.implicitly_wait(1)
             # 判断异常处理次数
             if _error_num > _max_num:

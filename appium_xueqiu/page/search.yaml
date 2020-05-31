@@ -1,0 +1,23 @@
+search:
+  - by: xpath
+    locator: '//*[@resource-id="com.xueqiu.android:id/search_input_text"]'
+    action: send
+    value: alibaba
+  - by: xpath
+    locator: '//*[@text="BABA"]'
+    action: click
+
+add:
+  - by: xpath
+    locator: '//*[contains(@resource-id,"stock_item_container")]//*[@text="${name}"]/../..//*[@text="加自选"]'
+    action: click
+
+is_choose:
+  - by: xpath
+    locator:  '//*[contains(@resource-id,"stock_item_container")]//*[@text="${name}"]/../..//*[@text="已添加"]'
+    action: len > 0
+
+reset:
+  - by: xpath
+    locator:  '//*[contains(@resource-id,"stock_item_container")]//*[@text="${name}"]/../..//*[@text="已添加"]'
+    action: click
