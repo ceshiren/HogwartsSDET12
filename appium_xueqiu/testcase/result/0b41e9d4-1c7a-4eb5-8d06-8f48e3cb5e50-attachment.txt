@@ -1,0 +1,21 @@
+[32mINFO    [0m root:wrapper.py:22 run find
+ args: 
+('xpath', "//*[@resource-id='android:id/tabs']//*[@text='行情']")
+{}
+[32mINFO    [0m root:wrapper.py:22 run find
+ args: 
+('xpath', '//*[@resource-id="com.xueqiu.android:id/search_input_text"]')
+{}
+[31m[1mERROR   [0m root:wrapper.py:33 element not found, handle black list
+[32mINFO    [0m root:wrapper.py:22 run find
+ args: 
+('xpath', '//*[@resource-id="com.xueqiu.android:id/search_input_text"]')
+{}
+[32mINFO    [0m root:wrapper.py:22 run find
+ args: 
+('xpath', '//*[@text="BABA"]')
+{}
+[32mINFO    [0m root:wrapper.py:22 run find
+ args: 
+('xpath', '//*[contains(@resource-id,"stock_item_container")]//*[@text="阿里巴巴"]/../..//*[@text="加自选"]')
+{}
