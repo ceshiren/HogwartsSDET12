@@ -1,0 +1,22 @@
+depend: ['requests']
+
+def_get_token:
+    run_request:
+      method: get
+      url: https://qyapi.weixin.qq.com/cgi-bin/gettoken
+      params:
+        corpid: wwe653983e4c732493
+        corpsecret: T72_Vgw9TaNS-FLDU2gJlw6AteerMXsuMval9kGNZbc
+
+def_get:
+    run_request:
+      method: get
+      url: https://qyapi.weixin.qq.com/cgi-bin/user/get
+      params:
+        access_token:
+          $(get_token)
+        userid:
+          YuRuoTong
+
+
+

@@ -1,0 +1,11 @@
+update:
+  "method": "post",
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/update",
+  "params": {
+    "access_token": ${self.token}
+  },
+  "json": {
+    "userid": ${userid},
+    "name": ${name},
+    "mobile": ${mobile},
+  }
