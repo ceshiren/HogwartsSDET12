@@ -1,6 +1,7 @@
 from appium import webdriver
 
 from appium_wework.page.base_page import BasePage
+from appium_wework.page.main import Main
 
 
 class App(BasePage):
@@ -8,7 +9,7 @@ class App(BasePage):
         if self._driver == None:
             caps = {}
             caps["platformName"] = "Android"
-            caps["deviceName"] = "127.0.0.1:7555"
+            caps["deviceName"] = "192.168.56.103:5555"
             caps["appPackage"] = "com.tencent.wework"
             caps["appActivity"] = ".launch.WwMainActivity"
             caps['noReset'] = "true"
@@ -26,7 +27,7 @@ class App(BasePage):
         pass
 
     def stop(self):
-        pass
+        self._driver.quit()
 
     def main(self) -> Main:
         return Main(self._driver)

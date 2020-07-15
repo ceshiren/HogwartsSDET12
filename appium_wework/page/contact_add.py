@@ -5,24 +5,27 @@ from appium_wework.page.base_page import BasePage
 
 class ContactAdd(BasePage):
 
-    def input_name(self):
+    def input_name(self, username):
         nameelement = self.find(MobileBy.XPATH,
                                 "//*[@text='姓名　']/..//*[@class='android.widget.EditText']")
-        nameelement.send_keys("霍格name1")
+        nameelement.send_keys(username)
 
         return self
 
-    def set_gender(self):
+    def set_gender(self, gender):
         self.find(MobileBy.XPATH,
                   "//*[@text='性别']/..//*[contains(@class, 'TextView') and @text='男']").click()
-        self.find(MobileBy.XPATH, "//*[@text='女']").click()
+        if gender == '女':
+            self.find(MobileBy.XPATH, "//*[@text='女']").click()
+        else:
+            self.find(MobileBy.XPATH, "//*[@text='男']").click()
 
         return self
 
-    def input_phonenum(self):
+    def input_phonenum(self, phonenum):
         phonenum_element = self.find(MobileBy.XPATH,
                                      "//*[@text='手机　']/..//*[contains(@class, 'EditText')]")
-        phonenum_element.send_keys("18712345678")
+        phonenum_element.send_keys(phonenum)
 
         return self
 

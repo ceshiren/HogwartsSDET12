@@ -19,6 +19,10 @@ class BasePage:
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
 
+    def back(self, num=1):
+        for i in range(num):
+            self._driver.back()
+
     def find(self, locator, value: str = None):
         logging.info(locator)
         logging.info(value)

@@ -9,7 +9,7 @@ class App(BasePage):
         if self._driver == None:
             caps = {}
             caps["platformName"] = "Android"
-            caps["deviceName"] = "127.0.0.1:7555"
+            caps["deviceName"] = "192.168.56.102:5555"
             caps["appPackage"] = "com.xueqiu.android"
             caps["appActivity"] = ".view.WelcomeActivityAlias"
             caps['noReset'] = "true"
@@ -19,15 +19,16 @@ class App(BasePage):
         else:
             self._driver.launch_app()
 
-        self._driver.implicitly_wait(3)
+        self._driver.implicitly_wait(15)
 
         return self
 
     def restart(self):
-        pass
+        self._driver.close()
+        self._driver.launch_app()
 
     def stop(self):
-        pass
+        self._driver.quit()
 
     def main(self) -> Main:
         return Main(self._driver)

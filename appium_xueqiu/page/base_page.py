@@ -45,6 +45,9 @@ class BasePage:
             element_text = self._driver.find_element(locator, value).text
         return element_text
 
+    def get_screenshot(self, filename):
+        self._driver.get_screenshot_as_file(filename)
+
     def steps(self, path):
         with open(path, encoding="utf-8") as f:
             name = inspect.stack()[1].function
@@ -63,3 +66,6 @@ class BasePage:
                 if "len > 0" == action:
                     eles = self.finds(step["by"], step["locator"])
                     return len(eles) > 0
+
+    def back(self):
+        self._driver.back()

@@ -1,6 +1,10 @@
 search:
-  - by: xpath
-    locator: '//*[@resource-id="com.xueqiu.android:id/search_input_text"]'
+  - by: id
+    locator: 'com.xueqiu.android:id/action_search'
+    action: click
+  - by: id
+    #    locator: '//*[@resource-id="com.xueqiu.android:id/search_input_text"]'
+    locator: 'com.xueqiu.android:id/search_input_text'
     action: send
     value: alibaba
   - by: xpath
